@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en-US">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -7,23 +7,33 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
-
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        
+        <div class="page-wrap">
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+            <h1>Nic Cage It</h1>
+            <h2>Superimpose Nicolas Cage on a photo of your choosing.</h2>
+
+            <!--<div class="drag-and-drop" id="drag-and-drop">
+                <h3>Drag and drop your photo here.</h3>
+            </div>-->
+
+            <img id="backplate-img" class="backplate-img" src="" alt="">
+
+            <canvas class="canvas" id="canvas">
+                It appears your browser does not support the HTML5 <code>&lt;canvas&gt;</code> element.
+                Please update your browser to use this silly site.
+            </canvas>
+
+        </div>
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/jquery.facedetection.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
