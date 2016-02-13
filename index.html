@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Cageify Your Photos &mdash; Nic Cage It</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,20 +14,30 @@
     <body>
         
         <div class="page-wrap">
+            
+            <header>
+                <h1>Nic Cage It</h1>
+                <h2>Superimpose Nicolas Cage on a photo of your choosing.</h2>
+            </header>
 
-            <h1>Nic Cage It</h1>
-            <h2>Superimpose Nicolas Cage on a photo of your choosing.</h2>
+            <h3>Step 1: Choose the image you'd like to Cageify&trade;</h3>
 
-            <!--<div class="drag-and-drop" id="drag-and-drop">
-                <h3>Drag and drop your photo here.</h3>
-            </div>-->
+            <label for="file-upload">Upload your photo: </label>
+            <input type="file" id="file-upload" accept="image/*">
 
-            <img id="backplate-img" class="backplate-img" src="" alt="">
+            <h3>Step 2: Observe the result in all it's gloriousness</h3>
 
             <canvas class="canvas" id="canvas">
-                It appears your browser does not support the HTML5 <code>&lt;canvas&gt;</code> element.
-                Please update your browser to use this silly site.
+                It appears your browser does not support the HTML5 canvas element.<br>
+                Please <a href="http://browsehappy.com/">update your browser</a> to use this silly site.
             </canvas>
+
+            <h3>Step 3: Download the image</h3>
+            <a href="#" class="button huge primary">Download</a>
+
+            <footer>
+                Made by two guys at <a href="http://wwhack.org">WWHack 2016</a>.
+            </footer>
 
         </div>
 
