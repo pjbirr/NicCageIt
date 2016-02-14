@@ -2,21 +2,31 @@
 	"use strict";
 
 	var WIDTH  = 900,
-		HEIGHT = 600,
-		RATIO = WIDTH / HEIGHT;
+		HEIGHT = 600;
 
-	var cages = ["/img/cage01.png"];
+	var cages = [
+		"/img/cage01.png",
+		"/img/cage02.png",
+		"/img/cage03.png",
+		"/img/cage04.png",
+		"/img/cage05.png",
+		"/img/cage06.png",
+		"/img/cage07.png",
+		"/img/cage08.png"
+	];
+
+	var facesToDraw = [];
 
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d");
 	canvas.width  = WIDTH;
 	canvas.height = HEIGHT;
 
+	// set the font and print out default message
 	ctx.font = "24px sans-serif";
 	ctx.fillText("No image uploaded.", WIDTH/2.65, HEIGHT/2);
 
 	$("#file-upload").change(function() {
-		//console.log(this.files);
 
 		var reader = new FileReader();
 
@@ -32,32 +42,54 @@
 	            // detect faces
 	            $("#canvas").faceDetection({
 					complete: function (faces) {
-						console.log(faces.length + " face(s) have been detected!\n");
+						console.log(faces.length + " face(s) have been detected!");
 						if (faces.length == 0)
-							alert("0 faces were detected, please try a different photo.");
+							alert("0 faces were detected, please use a different photo.");
+
+						console.log(faces);
+
+						for (var i = 0; i < faces.length; i++)
+							facesToDraw.push(new Image());
+
+						for (var i = 0; i < faces.length; i++) {
+							facesToDraw[i] = (new Image().src = cages[Math.floor(Math.random()*cages.length)]);
+							//console.log(faces[i]);
+						}
+
+						for (var i = 0; i < facesToDraw.length; i++) {
+
+						}
 
 						// draw cages over detected faces
-						for (var i = 0; i < faces.length; i++) {
-							var face = new Image();
-							
-							face.onload = function() {
-								var ratio = calcFaceRatio(face.width, face.height, faces[i].width, faces[i].height);
+						// for (var i = 0; i < faces.length; i++) {
+						// 	console.log("Face " + i + "...");
 
-								//if (ratio.width == 0 || ratio.height == 0)
-									//alert("Hmm, looks like your cages have no dimension. Please try again.");
-								ctx.drawImage(face, faces[i].x, faces[i].y, ratio.width, ratio.height);
-							}
+						// 	var face = new Image();
+						// 	var currentFace = faces[i];
 
-							face.src = cages[Math.floor(Math.random()*cages.length)];
-						}
+						// 	face.onload = function() {
+						// 		console.log(currentFace);
+						// 		var ratio = calcFaceRatio(face.width, face.height, currentFace.width, currentFace.height);
+
+						// 		if (ratio.width == 0 || ratio.height == 0)
+						// 			alert("Hmm, looks like your cages have no dimension. Please try again.");
+						// 		console.log(currentFace.x + ", " + currentFace.y + " | " + ratio.width + ", " + ratio.height);
+						// 		ctx.drawImage(face, currentFace.x, currentFace.y, ratio.width, ratio.height);
+						// 		//ctx.drawImage(face, currentFace.x, currentFace.y, currentFace.width, currentFace.height);
+						// 	}
+
+						// 	face.src = cages[Math.floor(Math.random()*cages.length)];
+						// }
 					},
+
 					error: function(code, message) {
 						alert("Error: " + message);
 					}
 				});
 
 	        }
-	        	img.src = e.target.result;
+	        	
+	        img.src = e.target.result;
     	}
     	
     	reader.readAsDataURL(this.files[0]);
