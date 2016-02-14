@@ -62,51 +62,7 @@
 							// tried to be random but nah
 							temp.src = cages[Math.floor(Math.random() * cages.length)];
 						}
-
-						// console.log(faces);
-
-						// for (var i = 0; i < faces.length; i++)
-						// 	facesToDraw.push(new Image());
-
-						// for (var i = 0; i < faces.length; i++) {
-						// 	facesToDraw[i].src = cages[Math.floor(Math.random()*cages.length)];
-						// 	//console.log(faces[i]);
-						// }
-
-						// console.log(facesToDraw);
-
-						// for (var i = 0; i < facesToDraw.length; i++) {
-						// 	var ratio = calcFaceRatio(facesToDraw[i].width, facesToDraw[i].height, faces[i].width, faces[i].height);
-						// 	console.log(facesToDraw[i]);
-						// 	console.log(facesToDraw[i].width + ", " + facesToDraw[i].height);
-						// 	document.write(facesToDraw[i].width);
-
-						// 	if (ratio.width == 0 || ratio.height == 0)
-						// 		alert("Hmm, looks like there's no dimension. Please try again.");
-						// 	console.log(faces[i].x + ", " + faces[i].y + " | " + ratio.width + ", " + ratio.height);
-						// 	ctx.drawImage(facesToDraw[i], faces[i].x, faces[i].y, ratio.width, ratio.height);
-						// }
-
-						// draw cages over detected faces
-						// for (var i = 0; i < faces.length; i++) {
-						// 	console.log("Face " + i + "...");
-
-						// 	var face = new Image();
-						// 	var currentFace = faces[i];
-
-						// 	face.onload = function() {
-						// 		console.log(currentFace);
-						// 		var ratio = calcFaceRatio(face.width, face.height, currentFace.width, currentFace.height);
-
-						// 		if (ratio.width == 0 || ratio.height == 0)
-						// 			alert("Hmm, looks like your cages have no dimension. Please try again.");
-						// 		console.log(currentFace.x + ", " + currentFace.y + " | " + ratio.width + ", " + ratio.height);
-						// 		ctx.drawImage(face, currentFace.x, currentFace.y, ratio.width, ratio.height);
-						// 		//ctx.drawImage(face, currentFace.x, currentFace.y, currentFace.width, currentFace.height);
-						// 	}
-
-						// 	face.src = cages[Math.floor(Math.random()*cages.length)];
-						// }
+						
 					},
 
 					error: function(code, message) {
@@ -139,12 +95,6 @@
 		//console.log(maxWidth + " / " + srcWidth + " = " + maxWidth/srcWidth);
 		//console.log("Ratio: " + ratio);
 		return { width: srcWidth*ratio, height: srcHeight*ratio };
-	}
-
-	function isValid(num) {
-		if (num == 0 || num === "NaN" || num === "Infinity")
-			return false;
-		return true;
 	}
 
 })();
