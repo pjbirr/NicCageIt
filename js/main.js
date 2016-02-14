@@ -44,14 +44,8 @@
 						if (faces.length == 0)
 							alert("0 faces were detected, please use a different photo.");
 
-						var srcs = [];
-
-						for (var i = 0; i < faces.length; i++)
-							srcs.push(cages[Math.floor(Math.random() * cages.length)]);
-
 						for (var i = 0; i < faces.length; i++) {
 							var temp = new Image();
-							//srcs.push(cages[Math.floor(Math.random() * cages.length)]);
 
 							// js closures are hard
 							temp.onload = (function(idx) {
@@ -65,6 +59,7 @@
 								}
 							})(i);
 
+							// tried to be random but nah
 							temp.src = cages[Math.floor(Math.random() * cages.length)];
 						}
 
@@ -126,6 +121,11 @@
     	
     	reader.readAsDataURL(this.files[0]);
 	
+	});
+
+	$("#dl-btn").click(function() {
+		this.href = canvas.toDataURL();
+		this.download = "cageify.png";
 	});
 
 	// calc correct aspect ratio for drawing images onto the canvas
