@@ -65,9 +65,7 @@
 								}
 							})(i);
 
-							temp.src = (function(idx) {
-								return srcs[idx];
-							})(i);
+							temp.src = cages[Math.floor(Math.random() * cages.length)];
 						}
 
 						// console.log(faces);
