@@ -46,19 +46,41 @@
 						if (faces.length == 0)
 							alert("0 faces were detected, please use a different photo.");
 
-						console.log(faces);
-
-						for (var i = 0; i < faces.length; i++)
-							facesToDraw.push(new Image());
-
 						for (var i = 0; i < faces.length; i++) {
-							facesToDraw[i] = (new Image().src = cages[Math.floor(Math.random()*cages.length)]);
-							//console.log(faces[i]);
+							var temp = new Image();
+
+							temp.onload = (function(idx) {
+								return function() {
+									ctx.drawImage(temp, faces[idx].x, faces[idx].y, temp.width, temp.height);
+								}
+							}(i))
+
+							temp.src = cages[Math.floor(Math.random() * cages.length)];
 						}
 
-						for (var i = 0; i < facesToDraw.length; i++) {
+						// console.log(faces);
 
-						}
+						// for (var i = 0; i < faces.length; i++)
+						// 	facesToDraw.push(new Image());
+
+						// for (var i = 0; i < faces.length; i++) {
+						// 	facesToDraw[i].src = cages[Math.floor(Math.random()*cages.length)];
+						// 	//console.log(faces[i]);
+						// }
+
+						// console.log(facesToDraw);
+
+						// for (var i = 0; i < facesToDraw.length; i++) {
+						// 	var ratio = calcFaceRatio(facesToDraw[i].width, facesToDraw[i].height, faces[i].width, faces[i].height);
+						// 	console.log(facesToDraw[i]);
+						// 	console.log(facesToDraw[i].width + ", " + facesToDraw[i].height);
+						// 	document.write(facesToDraw[i].width);
+
+						// 	if (ratio.width == 0 || ratio.height == 0)
+						// 		alert("Hmm, looks like there's no dimension. Please try again.");
+						// 	console.log(faces[i].x + ", " + faces[i].y + " | " + ratio.width + ", " + ratio.height);
+						// 	ctx.drawImage(facesToDraw[i], faces[i].x, faces[i].y, ratio.width, ratio.height);
+						// }
 
 						// draw cages over detected faces
 						// for (var i = 0; i < faces.length; i++) {
