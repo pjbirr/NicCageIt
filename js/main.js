@@ -15,8 +15,6 @@
 		"/img/cage08.png"
 	];
 
-	var facesToDraw = [];
-
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d");
 	canvas.width  = WIDTH;
@@ -46,16 +44,30 @@
 						if (faces.length == 0)
 							alert("0 faces were detected, please use a different photo.");
 
+						var srcs = [];
+
+						for (var i = 0; i < faces.length; i++)
+							srcs.push(cages[Math.floor(Math.random() * cages.length)]);
+
 						for (var i = 0; i < faces.length; i++) {
 							var temp = new Image();
+							//srcs.push(cages[Math.floor(Math.random() * cages.length)]);
 
+							// js closures are hard
 							temp.onload = (function(idx) {
 								return function() {
-									ctx.drawImage(temp, faces[idx].x, faces[idx].y, temp.width, temp.height);
-								}
-							}(i))
+									console.log(idx);
+									var ratio = calcFaceRatio(temp.width, temp.height, faces[idx].width, faces[idx].height);
 
-							temp.src = cages[Math.floor(Math.random() * cages.length)];
+									if (ratio.width == 0 || ratio.height == 0)
+										alert("Hmm, looks like there's no dimension. Please try again.");
+									ctx.drawImage(temp, faces[idx].x-15, faces[idx].y-30, ratio.width *= 1.3, ratio.height *= 1.3);
+								}
+							})(i);
+
+							temp.src = (function(idx) {
+								return srcs[idx];
+							})(i);
 						}
 
 						// console.log(faces);
@@ -125,7 +137,7 @@
 	}
 
 	function calcFaceRatio(srcWidth, srcHeight, maxWidth, maxHeight) {
-		var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+		var ratio = Math.max(maxWidth / srcWidth, maxHeight / srcHeight);
 		//console.log(maxWidth + " / " + srcWidth + " = " + maxWidth/srcWidth);
 		//console.log("Ratio: " + ratio);
 		return { width: srcWidth*ratio, height: srcHeight*ratio };
